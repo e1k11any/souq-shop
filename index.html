@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Souq Shop</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="brand">
+                <div class="logo">SS</div>
+                <h1>Souq Shop</h1>
+            </div>
+            <nav id="nav-links"></nav>
+        </div>
+    </header>
+
+    <main class="container" id="content">
+
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <div class="hero-card">
+                    <h2>Welcome to Souq Shop</h2>
+                    <p>Explore beautifully curated products. Register or sign in to add to cart and checkout.</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary" data-page="register">Get Started</button>
+                        <button class="btn btn-ghost" data-page="login">Log In</button>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <h3>Featured Today</h3>
+                    <div id="mini-feature">Loading...</div>
+                </div>
+            </div>
+            <section class="promo-banner">
+                <h3>Special Offer!</h3>
+                <p>Get 20% off your first purchase with code <strong>SOUQ20</strong></p>
+                <button class="btn btn-primary" data-page="categories">Shop Now</button>
+            </section>
+            <section class="featured-categories">
+                <h3>Explore Our Categories</h3>
+                <div id="category-grid" class="category-grid"></div>
+            </section>
+            <section class="testimonials">
+                <h3>What Our Customers Say</h3>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>"Amazing selection and fast delivery! Souq Shop is my go-to for unique finds."</p>
+                        <div class="testimonial-author">— Sarah M.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The customer service is top-notch, and the products are always high quality."</p>
+                        <div class="testimonial-author">— John D.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"I love the curated collections! Makes shopping so easy and enjoyable."</p>
+                        <div class="testimonial-author">— Emily R.</div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="register-page" class="page">
+            <form id="register-form" class="form-container" novalidate>
+                <h2>Create Account</h2>
+                <div class="form-group">
+                    <label for="reg-name">Full name</label>
+                    <input id="reg-name" type="text" required>
+                    <div id="reg-name-error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input id="reg-email" type="email" required>
+                    <div id="reg-email-error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input id="reg-password" type="password" required minlength="8">
+                    <div id="reg-password-error" class="error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirm password</label>
+                    <input id="reg-confirm-password" type="password" required>
+                    <div id="reg-confirm-password-error" class="error"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </section>
+
+        <section id="login-page" class="page">
+            <form id="login-form" class="form-container" novalidate>
+                <h2>Welcome Back</h2>
+                <div id="login-error" class="error" style="margin-bottom: 1rem;"></div>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input id="login-email" type="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input id="login-password" type="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+        </section>
+
+        <section id="categories-page" class="page">
+            <div class="categories-header">
+                <h2>Explore Products</h2>
+                <p>Browse our complete catalog</p>
+            </div>
+            <div class="filters">
+                <div class="filter-item">
+                    <label for="search-input">Search by name</label>
+                    <input id="search-input" placeholder="e.g., iPhone" />
+                </div>
+                <div class="filter-item">
+                    <label for="category-select">Category</label>
+                    <select id="category-select">
+                        <option value="">All</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Price Range</label>
+                    <div class="price-inputs">
+                        <input id="price-min" type="number" placeholder="Min" min="0">
+                        <input id="price-max" type="number" placeholder="Max" min="0">
+                    </div>
+                </div>
+                <div class="filter-item">
+                    <label for="rating-select">Min Rating</label>
+                    <select id="rating-select">
+                        <option value="">Any</option>
+                        <option value="4">★★★★☆+</option>
+                        <option value="3">★★★☆☆+</option>
+                        <option value="2">★★☆☆☆+</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="sort-select">Sort By</label>
+                    <select id="sort-select">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price ↑</option>
+                        <option value="price-desc">Price ↓</option>
+                        <option value="rating-desc">Rating ↓</option>
+                    </select>
+                </div>
+                <button id="clear-filters" class="btn btn-ghost">Clear</button>
+            </div>
+            <div id="slider" class="slider" aria-live="polite"></div>
+            <div class="products-section">
+                <h3>All Products</h3>
+                <div id="product-grid" class="product-grid"></div>
+            </div>
+        </section>
+
+        <section id="product-details-page" class="page">
+            <div id="product-details-content" class="product-details"></div>
+        </section>
+
+        <section id="contacts-page" class="page">
+            <div class="contact-box">
+                <h2>Contact Us</h2>
+                <p>Have questions? We're here to help!</p>
+                <p>Email: <strong>support@souqshop.com</strong></p>
+                <p>Phone: <strong>+1-123-456-7890</strong></p>
+            </div>
+        </section>
+
+        <section id="cart-page" class="page">
+            <div class="cart-header">
+                <h2>Your Shopping Cart</h2>
+                <div id="cart-total"></div>
+            </div>
+            <div id="cart-content"></div>
+            <div id="cart-actions" class="cart-actions">
+                <button id="buy-now-button" class="btn btn-primary">Proceed to Checkout</button>
+            </div>
+        </section>
+
+        <section id="order-confirmation-page" class="page">
+            <div class="order-box">
+                <h2>Order Confirmed! ✅</h2>
+                <p id="order-msg">Thanks for shopping with Souq Shop. Your order is being prepared.</p>
+                <div class="button-group">
+                    <button class="btn btn-primary" data-page="categories">Continue Shopping</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <button id="scroll-to-top" title="Scroll to top">↑</button>
+
+    <footer>
+        <div class="container">&copy; 2025 Souq Shop — All Rights Reserved</div>
+    </footer>
+
+</body>
+
+</html>
